@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
-    const { cardName,
+    const { onInputChange, statesInput: [cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -13,96 +13,95 @@ class Form extends Component {
       cardTrunfo,
       /* hasTrunfo, */
       isSaveButtonDisabled,
-      onInputChange,
-      onSaveButtonClick } = this.props;
+      onSaveButtonClick] } = this.props;
     return (
       <div>
         ADICIONE NOVA CARTA
         <form>
-          <label htmlFor="name-input">
+          <label htmlFor="cardName">
             Nome
             <br />
             <input
               type="text"
-              name="name-input"
+              name="cardName"
               data-testid="name-input"
-              id="name-input"
+              id="cardName"
               placeholder="Digite o nome da carta"
               value={ cardName }
               onChange={ onInputChange }
             />
           </label>
           <br />
-          <label htmlFor="description-input">
+          <label htmlFor="cardDescription">
             Descrição
             <br />
             <textarea
-              name="description-input"
+              name="cardDescription"
               data-testid="description-input"
-              id="description-input"
+              id="cardDescription"
               placeholder="Digite a descrição da carta"
               value={ cardDescription }
               onChange={ onInputChange }
             />
           </label>
           <br />
-          <label htmlFor="attr1-input">
+          <label htmlFor="cardAttr1">
             Attr1
             <input
               type="number"
-              name="attr1-input"
+              name="cardAttr1"
               data-testid="attr1-input"
-              id="attr1-input"
+              id="cardAttr1"
               placeholder="Digite o valor do atributo 1 aqui"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
           </label>
           <br />
-          <label htmlFor="attr1-input">
+          <label htmlFor="cardAttr2">
             Attr2
             <input
               type="number"
-              name="attr2-input"
+              name="cardAttr2"
               data-testid="attr2-input"
-              id="attr2-input"
+              id="cardAttr2"
               placeholder="Digite o valor do atributo 2 aqui"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
           </label>
           <br />
-          <label htmlFor="attr3-input">
+          <label htmlFor="cardAttr3">
             Attr3
             <input
               type="number"
-              name="attr3-input"
+              name="cardAttr3"
               data-testid="attr3-input"
-              id="attr3-input"
+              id="cardAttr3"
               placeholder="Digite o valor do atributo 3 aqui"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr3-input">
+          <label htmlFor="cardImage">
             <br />
             <input
               type="text"
-              name="image-input"
+              name="cardImage"
               data-testid="image-input"
-              id="image-input"
+              id="cardImage"
               placeholder="Inserir o caminho para imagem da carta"
               value={ cardImage }
               onChange={ onInputChange }
             />
           </label>
           <br />
-          <label htmlFor="rare-input">
+          <label htmlFor="cardRare">
             Raridade
             <select
-              name="favoritePlace"
+              name="cardRare"
               data-testid="rare-input"
-              id="rare-input"
+              id="cardRare"
               placeholder="Raridade"
               value={ cardRare }
               onChange={ onInputChange }
@@ -112,14 +111,14 @@ class Form extends Component {
               <option value="muito raro">Muito raro</option>
             </select>
           </label>
-          <label htmlFor="trunfo-input">
+          <label htmlFor="cardTrunfo">
             <br />
             Super Trunfo
             <input
               type="checkbox"
-              name="trunfo-input"
+              name="cardTrunfo"
               data-testid="trunfo-input"
-              id="trunfo-input"
+              id="cardTrunfo"
               checked={ cardTrunfo }
               onChange={ onInputChange }
             />

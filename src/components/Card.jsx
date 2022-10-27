@@ -2,19 +2,20 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Card extends Component {
-  DisplayCardTrunfo() {
+  /* DisplayCardTrunfo() {
     const { cardTrunfo } = this.props;
     return (cardTrunfo) ? (<p data-testid="trunfo-card">Super Trunfo</p>) : '';
-  }
+  } */
 
   render() {
-    const { cardName,
+    const { statesInput: [cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare } = this.props;
+      cardRare,
+      cardTrunfo] } = this.props;
     return (
       <div>
         <p data-testid="name-card">
@@ -40,7 +41,7 @@ class Card extends Component {
         <p data-testid="rare-card">
           {cardRare}
         </p>
-        { this.DisplayCardTrunfo() }
+        { (cardTrunfo) ? (<p data-testid="trunfo-card">Super Trunfo</p>) : '' }
       </div>
     );
   }
