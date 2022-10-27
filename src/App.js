@@ -128,6 +128,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       hasTrunfo,
+      savedDeckCards,
       isSaveButtonDisabled } = this.state;
 
     const defaultProps = {
@@ -152,6 +153,9 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ...defaultProps } />
+        { savedDeckCards.map((cardSaved, index) => (
+          <Card { ...cardSaved } key={ cardSaved.cardName + index } />
+        )) }
       </div>
     );
   }
