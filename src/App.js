@@ -42,32 +42,26 @@ class App extends React.Component {
       cardTrunfo,
       /* hasTrunfo, */
       isSaveButtonDisabled } = this.state;
+    const defaultProps = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      isSaveButtonDisabled,
+      handleClick: this.handleClick,
+    };
     return (
       <div>
         <h1>Tryunfo</h1>
         <Form
-          statesInput={ [cardName,
-            cardDescription,
-            cardAttr1,
-            cardAttr2,
-            cardAttr3,
-            cardImage,
-            cardRare,
-            cardTrunfo,
-            isSaveButtonDisabled,
-            this.handleClick] }
+          { ...defaultProps }
           onInputChange={ this.onInputChange }
         />
-        <Card
-          statesInput={ [cardName,
-            cardDescription,
-            cardAttr1,
-            cardAttr2,
-            cardAttr3,
-            cardImage,
-            cardRare,
-            cardTrunfo] }
-        />
+        <Card { ...defaultProps } />
       </div>
     );
   }

@@ -8,14 +8,14 @@ class Card extends Component {
   } */
 
   render() {
-    const { statesInput: [cardName,
+    const { cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo] } = this.props;
+      cardTrunfo } = this.props;
     return (
       <div>
         <p data-testid="name-card">

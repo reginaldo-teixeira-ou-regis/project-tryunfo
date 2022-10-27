@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Form extends Component {
   render() {
-    const { onInputChange, statesInput: [cardName,
+    const { onInputChange, cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -13,7 +13,7 @@ class Form extends Component {
       cardTrunfo,
       /* hasTrunfo, */
       isSaveButtonDisabled,
-      onSaveButtonClick] } = this.props;
+      onSaveButtonClick } = this.props;
     return (
       <div>
         ADICIONE NOVA CARTA
