@@ -14,7 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      /* hasTrunfo: false, */
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       savedDeckCards: [],
     };
@@ -76,7 +76,7 @@ class App extends React.Component {
   };
 
   clearFields = () => {
-    this.setState({
+    this.setState((prev) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -85,7 +85,8 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-    });
+      hasTrunfo: prev.savedDeckCards.some((card) => card.cardTrunfo),
+    }), this.ValidationInput);
   };
 
   onSaveButtonClick = () => {
@@ -126,7 +127,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      /* hasTrunfo, */
+      hasTrunfo,
       isSaveButtonDisabled } = this.state;
 
     const defaultProps = {
@@ -138,6 +139,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
       handleClick: this.handleClick,
     };

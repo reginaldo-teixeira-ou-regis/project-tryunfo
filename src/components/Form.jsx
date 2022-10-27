@@ -2,6 +2,24 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends Component {
+  renderTrunfo = () => {
+    const { cardTrunfo, hasTrunfo, onInputChange } = this.props;
+    return hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> : (
+      <label htmlFor="cardTrunfo">
+        <br />
+        Super Trunfo
+        <input
+          type="checkbox"
+          name="cardTrunfo"
+          data-testid="trunfo-input"
+          id="cardTrunfo"
+          checked={ cardTrunfo }
+          onChange={ onInputChange }
+        />
+      </label>
+    );
+  };
+
   render() {
     const { onInputChange,
       cardName,
@@ -12,7 +30,7 @@ class Form extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      /* hasTrunfo, */
+      hasTrunfo,
       isSaveButtonDisabled,
       onSaveButtonClick } = this.props;
     return (
@@ -113,18 +131,7 @@ class Form extends Component {
               <option value="muito raro">Muito raro</option>
             </select>
           </label>
-          <label htmlFor="cardTrunfo">
-            <br />
-            Super Trunfo
-            <input
-              type="checkbox"
-              name="cardTrunfo"
-              data-testid="trunfo-input"
-              id="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </label>
+          { this.renderTrunfo() }
           <button
             type="button"
             data-testid="save-button"
