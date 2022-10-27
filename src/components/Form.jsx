@@ -29,8 +29,8 @@ class Form extends Component {
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo,
-      hasTrunfo,
+      /* cardTrunfo,
+      hasTrunfo, */
       isSaveButtonDisabled,
       onSaveButtonClick } = this.props;
     return (
