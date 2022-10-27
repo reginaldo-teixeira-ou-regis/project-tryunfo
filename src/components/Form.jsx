@@ -84,8 +84,9 @@ class Form extends Component {
               onChange={ onInputChange }
             />
           </label>
+          <br />
           <label htmlFor="cardImage">
-            <br />
+            url da imagem
             <input
               type="text"
               name="cardImage"
