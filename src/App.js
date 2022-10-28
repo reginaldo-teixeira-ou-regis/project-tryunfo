@@ -17,11 +17,10 @@ class App extends React.Component {
       hasTrunfo: false,
       isSaveButtonDisabled: true,
       savedDeckCards: [],
+      filterName: '',
+      filterRare: '',
+      /* filterTrunfo: false, */
     };
-  }
-
-  handleClick() {
-
   }
 
   ValidationInput = () => {
@@ -141,7 +140,9 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       savedDeckCards,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      filterName,
+      filterRare } = this.state;
 
     const defaultProps = {
       cardName,
@@ -154,8 +155,11 @@ class App extends React.Component {
       cardTrunfo,
       hasTrunfo,
       isSaveButtonDisabled,
-      handleClick: this.handleClick,
     };
+
+    const filterDeck = savedDeckCards
+      .filter((card) => (card.cardName.includes(filterName)));
+
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -165,7 +169,44 @@ class App extends React.Component {
           onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card { ...defaultProps } />
-        { savedDeckCards.map((cardSaved, index) => (
+        <h2>TODAS AS CARTAS</h2>
+        <label htmlFor="filterName">
+          Filtrar por nome
+          <input
+            type="text"
+            name="filterName"
+            data-testid="name-filter"
+            id="filterName"
+            placeholder="Digite o nome da carta desejada"
+            value={ filterName }
+            onChange={ this.onInputChange }
+          />
+        </label>
+        <label htmlFor="filterRare">
+          Filtrar por raridade
+          <select
+            name="filterRare"
+            data-testid="rare-filter"
+            id="filterRare"
+            value={ filterRare }
+            onChange={ this.onInputChange }
+          >
+            <option value="todas">Todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
+        </label>
+        <label htmlFor="trunfoFilter">
+          Filtrar por Super Trunfo
+          <input
+            type="checkbox"
+            name="trunfoFilter"
+            data-testid="trunfo-filter"
+            id="trunfoFilter"
+          />
+        </label>
+        { filterDeck.map((cardSaved, index) => (
           <section key={ cardSaved.cardName + index }>
             <Card
               { ...cardSaved }
