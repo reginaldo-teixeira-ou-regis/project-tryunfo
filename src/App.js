@@ -76,7 +76,7 @@ class App extends React.Component {
   };
 
   clearFields = () => {
-    this.setState((prev) => ({
+    this.setState((prevState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: 0,
@@ -85,7 +85,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
-      hasTrunfo: prev.savedDeckCards.some((card) => card.cardTrunfo),
+      hasTrunfo: prevState.savedDeckCards.some((card) => card.cardTrunfo),
     }), this.ValidationInput);
   };
 
@@ -116,6 +116,18 @@ class App extends React.Component {
     const newSavedCards = [...savedDeckCards, saveCard];
 
     this.setState({ savedDeckCards: newSavedCards }, this.clearFields);
+  };
+
+  buttonExcluir = (index) => {
+    const { savedDeckCards } = this.state;
+    const updatedDeck = savedDeckCards;
+    updatedDeck.splice(index, 1);
+    this.setState({
+      savedDeckCards: updatedDeck,
+    });
+    this.setState({
+      hasTrunfo: savedDeckCards.some((card) => card.cardTrunfo),
+    });
   };
 
   render() {
@@ -154,8 +166,19 @@ class App extends React.Component {
         />
         <Card { ...defaultProps } />
         { savedDeckCards.map((cardSaved, index) => (
-          <Card { ...cardSaved } key={ cardSaved.cardName + index } />
-        )) }
+          <section key={ cardSaved.cardName + index }>
+            <Card
+              { ...cardSaved }
+            />
+            <button
+              type="button"
+              onClick={ () => this.buttonExcluir(index) }
+              data-testid="delete-button"
+            >
+              Excluir
+            </button>
+          </section>
+        ))}
       </div>
     );
   }
