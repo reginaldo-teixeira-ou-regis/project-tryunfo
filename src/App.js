@@ -18,7 +18,7 @@ class App extends React.Component {
       isSaveButtonDisabled: true,
       savedDeckCards: [],
       filterName: '',
-      filterRare: '',
+      filterRare: 'todas',
       /* filterTrunfo: false, */
     };
   }
@@ -157,8 +157,10 @@ class App extends React.Component {
       isSaveButtonDisabled,
     };
 
-    const filterDeck = savedDeckCards
-      .filter((card) => (card.cardName.includes(filterName)));
+    let filterDeck = savedDeckCards
+      .filter((name) => (name.cardName.includes(filterName)));
+    filterDeck = filterRare === 'todas' ? filterDeck : filterDeck
+      .filter((rare) => rare.cardRare === filterRare);
 
     return (
       <div>
